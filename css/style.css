@@ -33,6 +33,7 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     background-color: var(--white);
+    overflow-x: hidden;
 }
 
 .container {
@@ -49,15 +50,16 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-dark);
 }
 
-h1 { font-size: 3rem; }
-h2 { font-size: 2.5rem; }
-h3 { font-size: 2rem; }
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
 h4 { font-size: 1.5rem; }
 h5 { font-size: 1.25rem; }
 h6 { font-size: 1rem; }
 
 p, li, span, label {
     color: var(--text-light);
+    font-size: 1rem;
 }
 select {
     color: #6f6f70;
@@ -195,7 +197,12 @@ textarea {
     height: 3px;
     background-color: var(--text-dark);
     margin: 3px 0;
-    transition: 0.3s;
+    transition: 0.3s, background-color 0.3s;
+}
+
+/* When navbar is scrolled, make hamburger bars dark (almost black) */
+.navbar.scrolled .bar {
+    background-color: #222 !important;
 }
 
 /* Hero Section */
@@ -321,19 +328,37 @@ section#about .about-text h3, section#about .about-text p {
 }
 
 .about-stats {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    min-width: 220px;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    width: 100%;
+    justify-items: center !important;
+    align-items: stretch !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 .stat {
-    text-align: left;
+    text-align: center;
     padding: 1.5rem 1.2rem;
     background: var(--gray-100);
     border-radius: 10px;
     border-left: 4px solid var(--primary-color);
     margin-bottom: 0.5rem;
+    width: 100%;
+    max-width: 260px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: box-shadow 0.2s;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.stat:active, .stat:focus, .stat:hover {
+    box-shadow: 0 4px 16px rgba(220,38,38,0.10);
 }
 
 .stat h3 {
@@ -1356,6 +1381,13 @@ body.custom-modal-open {
     letter-spacing: 0.01em;
     text-align: left;
 }
+
+@media (max-width: 900px) {
+    .slogan {
+        text-align: center;
+    }
+}
+
 @media (max-width: 700px) {
     .slogan {
         font-size: 1rem;
@@ -1440,4 +1472,86 @@ body.custom-modal-open {
     color: #8ca0b3;
     margin-top: 0.2em;
     letter-spacing: 0.5px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 700px) {
+    .contact-details {
+        text-align: center;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 900px) {
+    .hamburger {
+        display: flex;
+        z-index: 2001;
+        position: relative;
+    }
+}
+
+@media (max-width: 700px) {
+    .footer-logo {
+        margin-bottom: 1rem;
+        height: 140px;
+        max-width: 240px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hero-logo {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+        padding: 1.5rem 0.5rem !important;
+        background: none !important;
+    }
+    .footer-section {
+        padding: 1.2rem 0.5rem;
+        border-bottom: 1px solid #e5e7eb;
+        margin-bottom: 0.5rem;
+        background: none !important;
+    }
+    .footer-section:last-child {
+        border-bottom: none;
+    }
+    .footer-section h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.7rem;
+    }
+    .footer-section p, .footer-section ul li {
+        font-size: 1rem;
+        margin-bottom: 0.4rem;
+    }
+    .footer-section ul li a {
+        font-size: 1rem;
+        padding: 0.2rem 0;
+        display: inline-block;
+    }
+    .footer-logo {
+        margin-bottom: 1rem;
+    }
+    .footer-bottom {
+        padding-top: 1.2rem;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo-img,
+    .hero-logo,
+    .footer-logo {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
 } 
